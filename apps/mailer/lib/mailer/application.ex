@@ -8,6 +8,7 @@ defmodule Mailer.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      {Mailer.MailerWorker, [:hello, :misael, :elixir]}
       # Starts a worker by calling: Mailer.Worker.start_link(arg)
       # {Mailer.Worker, arg}
     ]

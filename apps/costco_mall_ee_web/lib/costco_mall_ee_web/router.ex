@@ -20,9 +20,10 @@ defmodule CostcoMallEeWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", CostcoMallEeWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", CostcoMallEeWeb do
+    pipe_through :api
+    get "/", PageController, :api_index
+  end
 
   # Enables LiveDashboard only for development
   #

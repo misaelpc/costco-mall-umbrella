@@ -46,6 +46,7 @@ defmodule CostcoMallEeWeb.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:costco_mall_ee, in_umbrella: true},
+      {:mailer, in_umbrella: true},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"}
     ]
