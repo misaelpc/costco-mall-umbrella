@@ -8,6 +8,7 @@ defmodule CostcoMallEeWeb.PageController do
   def api_index(conn, _params) do
     IO.inspect(self())
     Mailer.MailerOne.send()
+    Mailer.MailerWorker.current()
     conn
      |> put_status(200)
      |> json(%{message: "ok"})
