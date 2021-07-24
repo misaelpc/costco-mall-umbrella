@@ -4,7 +4,7 @@ defmodule Mailer.MailerWorker do
   # Client
 
   def start_link(default) when is_list(default) do
-    GenServer.start_link(__MODULE__, default, name: __MODULE__)
+    GenServer.start_link(__MODULE__, default)
   end
 
   def push(pid, element) do
@@ -16,7 +16,11 @@ defmodule Mailer.MailerWorker do
   end
 
   def current() do
-    GenServer.call(__MODULE__, :current)
+    :poolboy.transaction(
+        :worker,
+        fn pid -> GenServer.call(pid, :current) end, 500
+      )
+    #GenServer.call(__MODULE__, :current)
   end
 
   #Server
